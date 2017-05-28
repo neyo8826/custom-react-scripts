@@ -131,7 +131,7 @@ module.exports = {
       // A missing `test` is equivalent to a match.
       {
         exclude: [
-          /\.html$/,
+          /\.html?$/,
           /\.(js|jsx)$/,
           /\.css$/,
           /\.json$/,
@@ -142,6 +142,10 @@ module.exports = {
           limit: 10000,
           name: 'static/media/[name].[hash:8].[ext]'
         }
+      },
+      {
+        test: /\.html?$/,
+        loader: 'html'
       },
       // Process JS with Babel.
       {

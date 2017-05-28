@@ -66,5 +66,21 @@ module.exports = {
       dev: 'style!css?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss',
       prod: 'style!css?modules&camelCase&-autoprefixer&importLoaders=1!postcss'
     }
+  },
+  'MARKDOWN': {
+    toArray: 'loaders',
+    fileRegex: /\.md$/,
+    getDev: function () {
+      return {
+        test: /\.md$/,
+        loader: 'html!markdown-it'
+      }
+    },
+    getProd: function () {
+      return {
+        test: /\.md/,
+        loader: ExtractTextPlugin.extract('markdown-it', 'html')
+      }
+    }
   }
 }
